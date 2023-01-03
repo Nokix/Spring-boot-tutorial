@@ -1,6 +1,6 @@
 package de.reichert.springboot.tutorial.entity;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "dep")
