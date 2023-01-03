@@ -34,4 +34,9 @@ public class DepartmentController {
         return foundAndDeleted ? "Deleted Department " + id + " successfully."
                 : "No Department with " + id + " found.";
     }
+
+    @GetMapping("/department/name/{name}")
+    public Optional<Department> fetchDepartmentByName(@PathVariable("name") String name) {
+        return departmentService.fetchDepartmentByName(name);
+    }
 }

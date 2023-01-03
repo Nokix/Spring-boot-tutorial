@@ -13,4 +13,6 @@ public interface DepartmentService {
     Optional<Department> fetchDepartmentById(Long id);
 
     boolean deleteDepartmentById(Long id);
+
+    Optional<Department> fetchDepartmentByName(String name);
 }

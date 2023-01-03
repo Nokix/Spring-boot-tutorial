@@ -34,4 +34,10 @@ public class DepartmentServiceImpl implements DepartmentService{
         departmentRepository.deleteById(id);
         return true;
     }
+
+    @Override
+    public Optional<Department> fetchDepartmentByName(String name) {
+        System.out.println(name);
+        return departmentRepository.findByName(name);
+    }
 }
