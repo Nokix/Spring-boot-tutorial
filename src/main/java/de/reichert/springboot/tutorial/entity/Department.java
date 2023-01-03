@@ -1,6 +1,9 @@
 package de.reichert.springboot.tutorial.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import org.hibernate.validator.constraints.Length;
 
 @Entity
 @Table(name = "dep")
@@ -11,6 +14,7 @@ public class Department {
     private Long id;
 
     @Column(name = "dep_name", nullable = false)
+    @NotBlank(message = "Please add a Department Name.")
     private String name;
     private String address;
     //@Transient
