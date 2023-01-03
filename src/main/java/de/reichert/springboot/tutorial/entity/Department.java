@@ -58,4 +58,14 @@ public class Department {
     public void setCode(String code) {
         this.code = code;
     }
+
+    @Override
+    public String toString() {
+        return "Department{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", address='" + address + '\'' +
+                ", code='" + code + '\'' +
+                '}';
+    }
 }
