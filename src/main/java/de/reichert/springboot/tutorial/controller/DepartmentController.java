@@ -34,4 +34,10 @@ public class DepartmentController {
         return foundAndDeleted ? "Deleted Department " + id + " successfully."
                 : "No Department with " + id + " found.";
     }
+
+    @PutMapping("/department/{id}")
+    public Department updateDepartment(@PathVariable("id") Long departmentId,
+                                       @RequestBody Department department) {
+        return departmentService.updateDepartment(departmentId, department);
+    }
 }
