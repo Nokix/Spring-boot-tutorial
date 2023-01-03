@@ -3,10 +3,17 @@ package de.reichert.springboot.tutorial.entity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.Length;
 
 @Entity
-@Table(name = "dep")
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class Department {
 
     @Id
@@ -17,59 +24,6 @@ public class Department {
     @NotBlank(message = "Please add a Department Name.")
     private String name;
     private String address;
-    //@Transient
     private String code;
 
-    public Department() {
-    }
-
-    // Konstruktoren, Getter, Setter,...
-
-    public Department(String name, String address, String code) {
-        this.name = name;
-        this.address = address;
-        this.code = code;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public String getCode() {
-        return code;
-    }
-
-    public void setCode(String code) {
-        this.code = code;
-    }
-
-    @Override
-    public String toString() {
-        return "Department{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", address='" + address + '\'' +
-                ", code='" + code + '\'' +
-                '}';
-    }
 }
