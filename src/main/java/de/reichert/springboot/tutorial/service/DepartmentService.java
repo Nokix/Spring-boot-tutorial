@@ -1,7 +1,7 @@
 package de.reichert.springboot.tutorial.service;
 
-import org.springframework.stereotype.Service;
+import de.reichert.springboot.tutorial.entity.Department;
 
 public interface DepartmentService {
-
+    Department saveDepartment(Department department);
 }
