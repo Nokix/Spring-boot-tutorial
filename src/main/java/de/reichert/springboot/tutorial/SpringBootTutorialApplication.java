@@ -2,9 +2,12 @@ package de.reichert.springboot.tutorial;
 
 import de.reichert.springboot.tutorial.entity.Department;
 import de.reichert.springboot.tutorial.repository.DepartmentRepository;
+import lombok.Builder;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
 public class SpringBootTutorialApplication {
@@ -20,7 +23,16 @@ public class SpringBootTutorialApplication {
         department0 = departmentRepository.save(department0);
         System.out.println(department0);
 
+        for (String beanDefinitionName : context.getBeanDefinitionNames()) {
+            System.out.println(beanDefinitionName);
+        }
+    }
 
+    @Bean
+    public CommandLineRunner foo() {
+        return (args) -> {
+            System.out.println("Hallo");
+        };
     }
 
 }
