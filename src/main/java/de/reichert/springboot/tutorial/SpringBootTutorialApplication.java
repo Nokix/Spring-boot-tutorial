@@ -31,7 +31,7 @@ public class SpringBootTutorialApplication {
     public CommandLineRunner jdbcExample(DepartmentRepository departmentRepository) {
         return (args -> {
 
-            Department department0 = new Department("Vetrieb", "Haus 11", "123");
+            Department department0 = Department.builder().name("Vertrieb").address("Haus 11").code("123").build();
             System.out.println(department0);
             department0 = departmentRepository.save(department0);
 
