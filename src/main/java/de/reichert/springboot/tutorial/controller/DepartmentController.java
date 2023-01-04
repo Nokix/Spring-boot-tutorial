@@ -1,12 +1,15 @@
 package de.reichert.springboot.tutorial.controller;
 
 import de.reichert.springboot.tutorial.entity.Department;
+import de.reichert.springboot.tutorial.error.DepartmentNotFoundException;
 import de.reichert.springboot.tutorial.service.DepartmentService;
 import jakarta.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 import java.util.Optional;
@@ -30,15 +33,17 @@ public class DepartmentController {
     }
 
     @GetMapping("/department/{id}")
-    public Optional<Department> fetchDepartmentById(@PathVariable("id") Long id) {
+    public Department fetchDepartmentById(@PathVariable("id") Long id) throws DepartmentNotFoundException {
         return departmentService.fetchDepartmentById(id);
     }
 
     @DeleteMapping("/department/{id}")
-    public String deleteDepartmentById(@PathVariable("id") Long id) {
-        boolean foundAndDeleted = departmentService.deleteDepartmentById(id);
-        return foundAndDeleted ? "Deleted Department " + id + " successfully."
-                : "No Department with " + id + " found.";
+    public void deleteDepartmentById(@PathVariable("id") Long id) {
+        try {
+            departmentService.deleteDepartmentById(id);
+        } catch (DepartmentNotFoundException e) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, e.getMessage(), e);
+        }
     }
 
     @GetMapping("/department/name/{name}")
