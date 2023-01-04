@@ -10,10 +10,10 @@ import org.springframework.web.bind.annotation.RestController;
 //@Controller ist eine spezielle Component
 //@RestController umfasst @Controller und @ResponseBody
 @RestController
-@PropertySource("classpath:welcome.properties")
+//@PropertySource("classpath:welcome.properties")
 public class HelloController {
 
-    @Value("${welcome.message}")
+    @Value("${welcome.message:hi}")
     private String welcome;
 
     @GetMapping("/")
