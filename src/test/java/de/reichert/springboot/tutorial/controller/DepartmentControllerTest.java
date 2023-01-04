@@ -56,7 +56,7 @@ class DepartmentControllerTest {
         Mockito.when(departmentService.fetchDepartmentById(1L))
                 .thenReturn(department);
 
-        MockHttpServletRequestBuilder get = MockMvcRequestBuilders.get("/qdepartment/1")
+        MockHttpServletRequestBuilder get = MockMvcRequestBuilders.get("/department/1")
                 .contentType(MediaType.APPLICATION_JSON);
         mockMvc.perform(get)
                 .andExpect(status().isOk())
